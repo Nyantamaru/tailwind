@@ -1,4 +1,4 @@
-import './App.css';
+import './index.css';
 import Employee from './components/Employee';
 import { useState } from 'react';
 
@@ -8,7 +8,7 @@ const App = () => {
   const showEmployees = true;
 
   return (
-    <div className="App">
+    <div className="bg-cyan-400">
       {showEmployees ? (
         <div>
           <input
