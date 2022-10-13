@@ -9,3 +9,9 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+/*
+git remote add origin git@github.com:Nyantamaru/tailwind.git
+git branch -M main
+git push -u origin main
+*/
