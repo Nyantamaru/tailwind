@@ -44,10 +44,21 @@ const App = () => {
     },
   ]);
 
+  const updateEmployee = (id, newName, newRole) => {
+    const updatedEmployees = employees.map((employee) => {
+      if (id === employee.id) {
+        return { ...employee, name: newName, role: newRole };
+      }
+
+      return employee;
+    });
+    setEmployees(updatedEmployees);
+  };
+
   const showEmployees = true;
 
   return (
-    <div className="">
+    <div>
       {showEmployees ? (
         <>
           <input
@@ -62,10 +73,12 @@ const App = () => {
               // console.log(uuidv4());
               return (
                 <Employee
-                  key={uuidv4()}
+                  key={employee.id}
+                  id={employee.id}
                   name={employee.name}
                   role={employee.role}
                   img={employee.img}
+                  updateEmployee={updateEmployee}
                 />
               );
             })}

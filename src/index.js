@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import App from './App';
 
@@ -9,9 +10,3 @@ root.render(
     <App />
   </React.StrictMode>
 );
-
-/*
-git remote add origin git@github.com:Nyantamaru/tailwind.git
-git branch -M main
-git push -u origin main
-*/
