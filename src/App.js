@@ -1,93 +1,19 @@
 import './index.css';
-import Employee from './components/Employee';
-import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import Header from './components/Header';
+import Employees from './pages/Employees';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Customers from './pages/Customers';
 
 const App = () => {
-  const [role, setRole] = useState('dev');
-  const [employees, setEmployees] = useState([
-    {
-      id: 1,
-      name: 'Emily',
-      role: 'Developer',
-      img: 'https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    },
-    {
-      id: 2,
-      name: 'Galatea',
-      role: 'Manager',
-      img: 'https://images.pexels.com/photos/157661/young-woman-shooting-model-157661.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    },
-    {
-      id: 3,
-      name: 'Melanie',
-      role: 'Software Engineer',
-      img: 'https://images.pexels.com/photos/372042/pexels-photo-372042.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    },
-    {
-      id: 4,
-      name: 'Scarlet',
-      role: 'Senior Intern',
-      img: 'https://images.pexels.com/photos/789822/pexels-photo-789822.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    },
-    {
-      id: 5,
-      name: 'Lorelai',
-      role: 'Director',
-      img: 'https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    },
-    {
-      id: 6,
-      name: 'Melody',
-      role: 'The Devops girl',
-      img: 'https://pbs.twimg.com/media/FPROWRaXwAY10Pn.jpg',
-    },
-  ]);
-
-  const updateEmployee = (id, newName, newRole) => {
-    const updatedEmployees = employees.map((employee) => {
-      if (id === employee.id) {
-        return { ...employee, name: newName, role: newRole };
-      }
-
-      return employee;
-    });
-    setEmployees(updatedEmployees);
-  };
-
-  const showEmployees = true;
-
   return (
-    <div>
-      {showEmployees ? (
-        <>
-          <input
-            type="text"
-            onChange={(e) => {
-              console.log(e.target.value);
-              setRole(e.target.value);
-            }}
-          />
-          <div className={'flex flex-wrap justify-center'}>
-            {employees.map((employee) => {
-              // console.log(uuidv4());
-              return (
-                <Employee
-                  key={employee.id}
-                  id={employee.id}
-                  name={employee.name}
-                  role={employee.role}
-                  img={employee.img}
-                  updateEmployee={updateEmployee}
-                />
-              );
-            })}
-          </div>
-        </>
-      ) : (
-        <p>You cannot see the employees </p>
-      )}
-    </div>
+    <BrowserRouter>
+      <Header>
+        <Routes>
+          <Route path="/employees" element={<Employees />} />
+          <Route path="/customers" element={<Customers />} />
+        </Routes>
+      </Header>
+    </BrowserRouter>
   );
 };
 

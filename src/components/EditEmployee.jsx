@@ -32,8 +32,6 @@ const EditEmployee = (props) => {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              console.log('hello from edit employee');
-              console.log(props.id, name, role);
               props.updateEmployee(props.id, name, role);
             }}
             id="editmodal"
